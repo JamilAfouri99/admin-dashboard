@@ -1,100 +1,93 @@
-import React from "react";
+"use client";
+
+import Input, { InputParams } from "admin/components/input";
+import React, { useState } from "react";
 
 function Filters() {
   return (
     <div className="flex flex-col sm:flex-row gap-4 flexBetween">
       <FilterByName />
-      <FilterByRole />
       <FilterByPhone />
+      <FilterByRole />
     </div>
   );
 }
+
 const FilterByName = () => {
-  return (
-    <form className="flex-1">
-      <label
-        htmlFor="Filter"
-        className="mb-2 text-sm font-medium text-gray-900 sr-only"
-      >
-        Filter By Name
-      </label>
-      <div className="relative">
-        <FilterIcon />
-        <input
-          type="FilterByName"
-          id="FilterByName"
-          className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
-          placeholder="Filter By Name"
-          required
-        />
-      </div>
-    </form>
-  );
-};
-const FilterByRole = () => {
-  return (
-    <form className="flex-1">
-      <label
-        htmlFor="Filter"
-        className="mb-2 text-sm font-medium text-gray-900 sr-only"
-      >
-        Filter By Role
-      </label>
-      <div className="relative">
-        <FilterIcon />
-        <input
-          type="FilterByRole"
-          id="FilterByRole"
-          className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
-          placeholder="Filter By Role"
-          required
-        />
-      </div>
-    </form>
-  );
+  const [filterByName, setFilterByName] = useState("");
+
+  const handleFilterChange = (value: string) => {
+    setFilterByName(value);
+  };
+
+  const handleFilterSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    console.log("Filter submitted:", filterByName);
+  };
+
+  const icon = <i className="fa fa-user" aria-hidden="true"></i>;
+
+  const inputProps: InputParams = {
+    label: "Filter By Name",
+    value: filterByName,
+    onChange: handleFilterChange,
+    onSubmit: handleFilterSubmit,
+    icon: icon,
+    placeholder: "Search by Name",
+  };
+
+  return <Input {...inputProps} />;
 };
 const FilterByPhone = () => {
-  return (
-    <form className="flex-1">
-      <label
-        htmlFor="Filter"
-        className="mb-2 text-sm font-medium text-gray-900 sr-only"
-      >
-        Filter By Phone
-      </label>
-      <div className="relative">
-        <FilterIcon />
-        <input
-          type="FilterByPhone"
-          id="FilterByPhone"
-          className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
-          placeholder="Filter By Phone"
-          required
-        />
-      </div>
-    </form>
-  );
+  const [filterByPhone, setFilterByPhone] = useState("");
+
+  const handleFilterChange = (value: string) => {
+    setFilterByPhone(value);
+  };
+
+  const handleFilterSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    console.log("Filter submitted:", filterByPhone);
+  };
+
+  const icon = <i className="fa fa-phone" aria-hidden="true"></i>;
+
+  const inputProps: InputParams = {
+    label: "Filter By Phone",
+    value: filterByPhone,
+    onChange: handleFilterChange,
+    onSubmit: handleFilterSubmit,
+    icon: icon,
+    placeholder: "Search by Phone",
+  };
+
+  return <Input {...inputProps} />;
 };
 
-const FilterIcon = () => {
-  return (
-    <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-      <svg
-        className="w-4 h-4 text-gray-500"
-        aria-hidden="true"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 20 20"
-      >
-        <path
-          stroke="currentColor"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-          d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-        />
-      </svg>
-    </div>
-  );
+const FilterByRole = () => {
+  const [filterByRole, setFilterByRole] = useState("");
+
+  const handleFilterChange = (value: string) => {
+    setFilterByRole(value);
+  };
+
+  const handleFilterSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    console.log("Filter submitted:", filterByRole);
+  };
+
+  const icon = <i className="fa fa-adjust" aria-hidden="true"></i>;
+
+  const inputProps: InputParams = {
+    label: "Filter By Role",
+    value: filterByRole,
+    onChange: handleFilterChange,
+    onSubmit: handleFilterSubmit,
+    icon: icon,
+    placeholder: "Search by Role",
+  };
+
+  return <Input {...inputProps} />;
 };
+
 export default Filters;

@@ -20,7 +20,8 @@ export default function RootLayout({
       <head>
         <FontStylesheet />
       </head>
-      <body className={inter.className}>{children}</body>
+
+      <body className={`${inter.className} bg-background`}>{children}</body>
     </html>
   );
 }

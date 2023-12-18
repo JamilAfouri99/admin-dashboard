@@ -44,6 +44,7 @@ export class HttpService {
 
     async get<T>(url: string, config?: AxiosRequestConfig): Promise<T> {
         const response = await this.axiosInstance.get<T>(url, config);
+        console.log(response)
         return response.data;
     }
 
